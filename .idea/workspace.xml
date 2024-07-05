@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Успешный обход cloudflare. Добавлен метод авторизации.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="drop .idea">
+      <change afterPath="$PROJECT_DIR$/.env_example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +146,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720176166486</updated>
-      <workItem from="1720176167893" duration="17073000" />
+      <workItem from="1720176167893" duration="17300000" />
     </task>
     <task id="LOCAL-00001" summary="Первый способ обхода cloudflare не увенчался успехом. Едем дальше">
       <option name="closed" value="true" />
@@ -171,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720195926869</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="drop .idea">
+      <option name="closed" value="true" />
+      <created>1720196085697</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720196085697</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +189,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первый способ обхода cloudflare не увенчался успехом. Едем дальше" />
     <MESSAGE value="Успешный обход cloudflare. Добавлен метод авторизации." />
-    <option name="LAST_COMMIT_MESSAGE" value="Успешный обход cloudflare. Добавлен метод авторизации." />
+    <MESSAGE value="drop .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="drop .idea" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/p2pbroker$selenium_test.coverage" NAME="selenium_test Coverage Results" MODIFIED="1720188966435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
