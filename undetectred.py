@@ -19,6 +19,7 @@ url = os.getenv('URL')
 def cloudflare_check(driver):
     try:
         driver('xpath://div/iframe').ele("Подтвердите, что вы человек", timeout=2.5).click()
+        print("Найден фрейм с проверкой от cloudflare")
         return True
     except:
         print("iframe cloudflare не найден")
@@ -37,11 +38,6 @@ def undetected(url):
 
 def autorization(driver):
     cloudflare_check(driver)
-    # try:
-    #     driver.ele('@type:checkbox').click()
-    # except:
-    #     print("iframe cloudflare not found")
-
     driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
     driver.ele('@placeholder:Введите пароль').input(os.environ.get('P2PPASS'))
     driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))

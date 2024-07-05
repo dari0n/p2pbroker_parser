@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="add .env_example">
+    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Исправление с поиском iframe cloudflare. Drission не прокликивал.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/undetectred.py" beforeDir="false" afterPath="$PROJECT_DIR$/undetectred.py" afterDir="false" />
     </list>
@@ -146,7 +146,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720176166486</updated>
-      <workItem from="1720176167893" duration="22301000" />
+      <workItem from="1720176167893" duration="22417000" />
     </task>
     <task id="LOCAL-00001" summary="Первый способ обхода cloudflare не увенчался успехом. Едем дальше">
       <option name="closed" value="true" />
@@ -188,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720196324252</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Исправление с поиском iframe cloudflare. Drission не прокликивал.">
+      <option name="closed" value="true" />
+      <created>1720203089028</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720203089028</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +207,8 @@
     <MESSAGE value="Успешный обход cloudflare. Добавлен метод авторизации." />
     <MESSAGE value="drop .idea" />
     <MESSAGE value="add .env_example" />
-    <option name="LAST_COMMIT_MESSAGE" value="add .env_example" />
+    <MESSAGE value="Исправление с поиском iframe cloudflare. Drission не прокликивал." />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление с поиском iframe cloudflare. Drission не прокликивал." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/p2pbroker$selenium_test.coverage" NAME="selenium_test Coverage Results" MODIFIED="1720188966435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
