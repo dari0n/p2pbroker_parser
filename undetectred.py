@@ -1,11 +1,9 @@
-import dotenv
 from DrissionPage import ChromiumPage
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
 from dotenv import load_dotenv
 import os
 from os.path import join, dirname
 import time
+from bot.bot import run
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -48,9 +46,10 @@ def autorization(driver):
 
 
 if __name__ == '__main__':
-    undetected(os.environ.get('LOGIN_URL'))
-    envs = dotenv.dotenv_values()
-    print(envs)
+    run()
+    #undetected(os.environ.get('LOGIN_URL'))
+    #envs = dotenv.dotenv_values()
+    #print(envs)
 
 """
 username_field = soup.findAll('input', attrs = {'class' : 'mantine-TextInput-input'})
