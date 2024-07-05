@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "p2pbroker"
+version = "0.1.0"
+description = ""
+authors = ["Minin <79887423414@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+cloudscraper = "^1.2.71"
+bs4 = "^0.0.2"
+selenium = "^4.22.0"
+selenium-stealth = "^1.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
