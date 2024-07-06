@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from DrissionPage import ChromiumPage
 from dotenv import load_dotenv
 import os
@@ -21,9 +23,7 @@ def cloudflare_check(driver):
         return True
     except:
         print("iframe cloudflare не найден")
-        return False
-
-
+        return True
 
 
 def undetected(url):
@@ -31,23 +31,51 @@ def undetected(url):
     driver.get(url)
     time.sleep(3)
     # driver.close()
-    autorization(driver)
+    return driver
 
 
 def autorization(driver):
-    cloudflare_check(driver)
-    driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
-    driver.ele('@placeholder:Введите пароль').input(os.environ.get('P2PPASS'))
-    driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))
-    # Пока тестовые credentials, убрал клик по кнопке авторизации
-    #driver.ele('@type:submit').click()
-    time.sleep(2)
-    print('login done')
+    try:
+        driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
+        driver.ele('@placeholder:Введите пароль').input(os.environ.get('P2PPASS'))
+        driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))
+        # Пока тестовые credentials, убрал клик по кнопке авторизации
+        # driver.ele('@type:submit').click()
+        time.sleep(2)
+    except:
+        print('Поля авторизации не найдены. Пробуем парсить.')
+        # return parse_course(driver)
+        return True
+
+
+def parse_course(driver):
+    i = 0;
+    for item in driver.eles('t:h3'):
+        i += 1;
+        if i == 5:
+            result_text = item.text[:-2].replace(',', '.')
+
+    with open("data_src/parsed.txt", "w") as f:
+        f.write(result_text)
+        print(f"Текущий курс = {result_text} записан в файл")
+        f.close()
 
 
 if __name__ == '__main__':
-    run()
-    #undetected(os.environ.get('LOGIN_URL'))
+    """ Получаем обьект драйвера, открываем сайт"""
+    driver = undetected(os.environ.get('LOGIN_URL'))
+    while True:
+        """ Проверяем, есть ли iframe проверки cloudflare. Если фрейм есть, то пробуем обойти защиту, если нет, переходим к авторизации"""
+        cloudflare_check(driver)
+        """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
+        autorization(driver)
+        parse_course(driver)
+        time.sleep(15)
+        driver.refresh()
+
+    #message = calculate(95, 0)
+    #run(message)
+
     #envs = dotenv.dotenv_values()
     #print(envs)
 
