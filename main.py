@@ -4,7 +4,6 @@ import os
 from os.path import join, dirname
 import time
 
-
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
@@ -28,7 +27,6 @@ def undetected(url):
     driver = ChromiumPage()
     driver.get(url)
     time.sleep(3)
-    # driver.close()
     return driver
 
 
@@ -38,7 +36,7 @@ def autorization(driver):
         driver.ele('@placeholder:Введите пароль').input(os.environ.get('P2PPASS'))
         driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))
         # Пока тестовые credentials, убрал клик по кнопке авторизации
-        # driver.ele('@type:submit').click()
+        driver.ele('@type:submit').click()
         time.sleep(2)
     except:
         print('Поля авторизации не найдены. Пробуем парсить.')
@@ -60,14 +58,19 @@ def parse_course(driver):
 
 
 if __name__ == '__main__':
-    """ Получаем обьект драйвера, открываем сайт"""
-    driver = undetected(os.environ.get('LOGIN_URL'))
-    while True:
-        """ Проверяем, есть ли iframe проверки cloudflare. Если фрейм есть, то пробуем обойти защиту, если нет, переходим к авторизации"""
-        cloudflare_check(driver)
-        """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
-        autorization(driver)
-        parse_course(driver)
-        time.sleep(15)
-        driver.refresh()
+    try:
+        """ Получаем обьект драйвера, открываем сайт"""
+        driver = undetected(os.environ.get('LOGIN_URL'))
+        """ Запускаем бота"""
+        while True:
+            """ Проверяем, есть ли iframe проверки cloudflare. Если фрейм есть, то пробуем обойти защиту, если нет, переходим к авторизации"""
+            cloudflare_check(driver)
+            """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
+            autorization(driver)
+            parse_course(driver)
+            time.sleep(15)
+            driver.refresh()
+    except (KeyboardInterrupt, SystemExit):
+        driver.quit()
+
 
