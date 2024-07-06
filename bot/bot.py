@@ -63,9 +63,6 @@ async def job():
 
 
 
-
-
-
 async def main():
     scheduler = AsyncIOScheduler()
     scheduler.add_job(job, 'interval', seconds=10)

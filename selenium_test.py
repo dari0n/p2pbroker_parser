@@ -31,16 +31,16 @@ def test_selenium():
     options.add_experimental_option('useAutomationExtension', False)
     options.add_argument("--disable-blink-features=AutomationControlled")
     driver = webdriver.Chrome(options=options)
-
-    # stealth(driver,
-    #         languages=["en-US", "en"],
-    #         user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.53 Safari/537.36',
-    #         vendor="Google Inc.",
-    #         platform="Win32",
-    #         webgl_vendor="Intel Inc.",
-    #         renderer="Intel Iris OpenGL Engine",
-    #         fix_hairline=True,
-    #         )
+     #
+     # stealth(driver,
+     #         languages=["en-US", "en"],
+     #         user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.53 Safari/537.36',
+     #         vendor="Google Inc.",
+     #         platform="Win32",
+     #         webgl_vendor="Intel Inc.",
+     #         renderer="Intel Iris OpenGL Engine",
+     #         fix_hairline=True,
+     #         )
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
         "source": '''
             delete window.cdc_adoQpoasnfa76pfcZLmcfl_Array;
