@@ -5,7 +5,7 @@ from os.path import join, dirname
 import time
 
 dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+load_dotenv(dotenv_path, override=True)
 
 tg_token = os.getenv('TG_TOKEN')
 username = os.getenv('P2PUSER')
@@ -20,6 +20,7 @@ def cloudflare_check(driver):
         return True
     except:
         print("iframe cloudflare не найден")
+        print(os.environ.get('USER_COURSE'))
         return True
 
 
@@ -45,6 +46,7 @@ def autorization(driver):
 
 
 def parse_course(driver):
+    load_dotenv(dotenv_path, override=True)
     i = 0
     for item in driver.eles('t:h3'):
         i += 1
@@ -56,6 +58,21 @@ def parse_course(driver):
         print(f"Текущий курс = {result_text} записан в файл")
         f.close()
 
+def run_parser():
+    try:
+        """ Получаем обьект драйвера, открываем сайт"""
+        driver = undetected(os.environ.get('LOGIN_URL'))
+        """ Запускаем бота"""
+        while True:
+            """ Проверяем, есть ли iframe проверки cloudflare. Если фрейм есть, то пробуем обойти защиту, если нет, переходим к авторизации"""
+            cloudflare_check(driver)
+            """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
+            autorization(driver)
+            parse_course(driver)
+            time.sleep(1)
+            driver.refresh()
+    except (KeyboardInterrupt, SystemExit):
+        driver.quit()
 
 if __name__ == '__main__':
     try:
@@ -68,8 +85,9 @@ if __name__ == '__main__':
             """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
             autorization(driver)
             parse_course(driver)
-            time.sleep(15)
             driver.refresh()
+
+
     except (KeyboardInterrupt, SystemExit):
         driver.quit()
 
