@@ -58,8 +58,7 @@ def parse_course(driver):
         print(f"Текущий курс = {result_text} записан в файл")
         f.close()
 
-
-if __name__ == '__main__':
+def run_parser():
     try:
         """ Получаем обьект драйвера, открываем сайт"""
         driver = undetected(os.environ.get('LOGIN_URL'))
@@ -72,6 +71,23 @@ if __name__ == '__main__':
             parse_course(driver)
             time.sleep(1)
             driver.refresh()
+    except (KeyboardInterrupt, SystemExit):
+        driver.quit()
+
+if __name__ == '__main__':
+    try:
+        """ Получаем обьект драйвера, открываем сайт"""
+        driver = undetected(os.environ.get('LOGIN_URL'))
+        """ Запускаем бота"""
+        while True:
+            """ Проверяем, есть ли iframe проверки cloudflare. Если фрейм есть, то пробуем обойти защиту, если нет, переходим к авторизации"""
+            cloudflare_check(driver)
+            """ Если найдены поля авторизации, пробуем авторизоваться, если нет, пробуем парсить """
+            autorization(driver)
+            parse_course(driver)
+            driver.refresh()
+
+
     except (KeyboardInterrupt, SystemExit):
         driver.quit()
 
