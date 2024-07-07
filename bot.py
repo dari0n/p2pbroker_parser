@@ -81,7 +81,7 @@ async def help(messages: Message, command: CommandObject):
                f" /start_parser - удаленный запуск парсера из бота.  \".\" \n"
                )
 
-    await bot.send_message(chat_id=chat_id, text=f"Не удалось запустить парсер.")
+    await bot.send_message(chat_id=chat_id, text=f"{message}")
 
 
 
