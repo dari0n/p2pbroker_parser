@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 from os.path import join, dirname
 import time
+from bot import reload_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path, override=True)
@@ -33,6 +34,7 @@ def undetected(url):
 
 def autorization(driver):
     try:
+        reload_dotenv()
         driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
         driver.ele('@placeholder:Введите пароль').input(os.environ.get('P2PPASS'))
         driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))

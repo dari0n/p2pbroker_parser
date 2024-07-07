@@ -2,7 +2,6 @@ import asyncio
 import os
 import subprocess
 import sys
-
 import dotenv
 import multiprocessing, queue, time, random
 from datetime import datetime
@@ -27,6 +26,7 @@ dispatcher = Dispatcher()
 dispatcher.include_router(router)
 data_path = 'data_src/parsed.txt'
 course_history = [0]
+dotenv.set_key(dotenv_path, "PARSER_ACTIVITY", '0')
 """
 TODO: Переделать иерархию, добавить методы управления. ("БОТ Авторизуйся", "БОТ Текущий курс" и др.)
 """
@@ -40,7 +40,7 @@ async def start(messages: Message, state: FSMContext):
     await bot.send_message(chat_id=chat_id, text="Статус бота: работает.")
     await state.clear()
 
-#@router.message(Command('set_course'))
+
 @dispatcher.message(Command('set_c'))
 async def set_c(messages: Message, command: CommandObject):
     data = command.args
@@ -57,15 +57,64 @@ async def set_d(messages: Message, command: CommandObject):
     print(os.getenv('DEVIATION'))
     await bot.send_message(chat_id=chat_id, text=f"Установлен процент отклонения курса: {data} %")
 
+@dispatcher.message(Command('set_pass'))
+async def set_pass(messages: Message, command: CommandObject):
+    reload_dotenv()
+    data = command.args
+    dotenv.set_key(dotenv_path, "P2PSECRET", data)
+
+    print(os.getenv('P2PSECRET'))
+    await bot.send_message(chat_id=chat_id, text=f"Установлен временный пароль: {data}")
+
+@dispatcher.message(Command('set_username'))
+async def set_username(messages: Message, command: CommandObject):
+
+    data = command.args
+    dotenv.set_key(dotenv_path, "P2PUSER", data)
+    reload_dotenv()
+    print(os.getenv('P2PUSER'))
+
+    await bot.send_message(chat_id=chat_id, text=f"Установлен логин для входа: {data}")
+
+@dispatcher.message(Command('set_user_password'))
+async def set_username(messages: Message, command: CommandObject):
+
+    data = command.args
+    dotenv.set_key(dotenv_path, "P2PPASS", data)
+    reload_dotenv()
+    print(os.getenv('P2PPASS'))
+    await bot.send_message(chat_id=chat_id, text=f"Установлен пароль для входа: {data}")
+
 @dispatcher.message(Command('start_parser'))
 async def start_parser(messages: Message, command: CommandObject):
     #multiprocessing.Process(target=parser.run_parser()).start()
+    reload_dotenv()
     exec_path = sys.executable
+    parser_activity = os.getenv('PARSER_ACTIVITY')
     try:
-        subprocess.Popen([exec_path, 'main.py'])
-        await bot.send_message(chat_id=chat_id, text=f"Парсер запущен.")
+        if int(parser_activity) == 0:
+            subprocess.Popen([exec_path, 'main.py'])
+            await bot.send_message(chat_id=chat_id, text=f"Парсер запущен.")
+            dotenv.set_key(dotenv_path, "PARSER_ACTIVITY", '1')
+        else:
+            await bot.send_message(chat_id=chat_id, text=f"Парсер уже запущен!")
     except:
         await bot.send_message(chat_id=chat_id, text=f"Не удалось запустить парсер.")
+
+@dispatcher.message(Command('help'))
+async def help(messages: Message, command: CommandObject):
+    message = (f" /start - проверка состояния работы бота.\n"
+               f" /set_c - установка значения эталонного курса. Прм. /set_c 99.223  Запятые не использовать, разделитель \".\" \n"
+               f" /set_d - установка процента отклонения курса. Прм. /set_d 0.2  Запятые не использовать, разделитель \".\" \n"
+               f" Перед запуском парсера: \n"
+               f" /set_username - установить логин для парсера.\n"
+               f" /set_user_password - установить пароль пользователя для парсера. \n"
+               f" /set_pass - установить временный пароль. \n"                          
+               f" /start_parser - удаленный запуск парсера из бота. \n"
+               )
+
+    await bot.send_message(chat_id=chat_id, text=f"{message}")
+
 
 
 async def job():
@@ -120,6 +169,7 @@ async def main():
 def run():
     try:
         print("Бот запущен")
+        reload_dotenv()
         asyncio.run(main())
 
     except (KeyboardInterrupt, SystemExit):
