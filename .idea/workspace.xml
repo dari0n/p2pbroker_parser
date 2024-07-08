@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Корректировка /help, добавлены новые команды">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Корректировка /help">
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.bot (1).executor": "Run",
-    "Python.bot.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.selenium_test.executor": "Run",
-    "Python.test_update_env.executor": "Run",
-    "Python.undetectred.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Python/p2pbroker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.bot (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.selenium_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_update_env.executor&quot;: &quot;Run&quot;,
+    &quot;Python.undetectred.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Python/p2pbroker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Python\p2pbroker" />
@@ -204,8 +203,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.bot (1)" />
-        <item itemvalue="Python.test_update_env" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.test_update_env" />
         <item itemvalue="Python.bot (1)" />
         <item itemvalue="Python.undetectred" />
       </list>
@@ -228,7 +227,8 @@
       <option name="presentableId" value="Default" />
       <updated>1720176166486</updated>
       <workItem from="1720176167893" duration="53666000" />
-      <workItem from="1720305092178" duration="15261000" />
+      <workItem from="1720305092178" duration="17772000" />
+      <workItem from="1720375117275" duration="133000" />
     </task>
     <task id="LOCAL-00001" summary="Первый способ обхода cloudflare не увенчался успехом. Едем дальше">
       <option name="closed" value="true" />
@@ -366,7 +366,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720362205728</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Корректировка /help">
+      <option name="closed" value="true" />
+      <created>1720362444245</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1720362444245</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Корректировка /help">
+      <option name="closed" value="true" />
+      <created>1720375157637</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1720375157637</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,16 +413,16 @@
     <MESSAGE value="Демка, добавлен ovveride в env" />
     <MESSAGE value="Добавлен запуск парсера из бота, установка env через бота" />
     <MESSAGE value="Фикс бага с множественным запускам парсера" />
-    <MESSAGE value="Корректировка /help" />
     <MESSAGE value="Корректировка /help, добавлены новые команды" />
-    <option name="LAST_COMMIT_MESSAGE" value="Корректировка /help, добавлены новые команды" />
+    <MESSAGE value="Корректировка /help" />
+    <option name="LAST_COMMIT_MESSAGE" value="Корректировка /help" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/p2pbroker$selenium_test.coverage" NAME="selenium_test Coverage Results" MODIFIED="1720188966435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/p2pbroker$bot__1_.coverage" NAME="bot (1) Coverage Results" MODIFIED="1720362073038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/p2pbroker$bot__1_.coverage" NAME="bot (1) Coverage Results" MODIFIED="1720365253015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$bot.coverage" NAME="bot Coverage Results" MODIFIED="1720205603646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$test_update_env.coverage" NAME="test_update_env Coverage Results" MODIFIED="1720359239121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/p2pbroker$main.coverage" NAME="main Coverage Results" MODIFIED="1720351028033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/p2pbroker$main.coverage" NAME="main Coverage Results" MODIFIED="1720365223312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$undetectred.coverage" NAME="undetectred Coverage Results" MODIFIED="1720276007458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

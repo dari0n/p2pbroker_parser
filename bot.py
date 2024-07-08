@@ -77,7 +77,7 @@ async def set_username(messages: Message, command: CommandObject):
     await bot.send_message(chat_id=chat_id, text=f"Установлен логин для входа: {data}")
 
 @dispatcher.message(Command('set_user_password'))
-async def set_username(messages: Message, command: CommandObject):
+async def set_user_password(messages: Message, command: CommandObject):
 
     data = command.args
     dotenv.set_key(dotenv_path, "P2PPASS", data)

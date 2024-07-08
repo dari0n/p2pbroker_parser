@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 from os.path import join, dirname
 import time
-from bot import reload_dotenv
+
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path, override=True)
@@ -12,7 +12,9 @@ tg_token = os.getenv('TG_TOKEN')
 username = os.getenv('P2PUSER')
 password = os.getenv('P2PPASS')
 url = os.getenv('URL')
-
+def reload_dotenv():
+    dotenv_path = join(dirname(__file__), '.env')
+    load_dotenv(dotenv_path, override=True)
 
 def cloudflare_check(driver):
     try:
