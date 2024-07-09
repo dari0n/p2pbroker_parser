@@ -85,6 +85,36 @@ async def set_user_password(messages: Message, command: CommandObject):
     print(os.getenv('P2PPASS'))
     await bot.send_message(chat_id=chat_id, text=f"Установлен пароль для входа: {data}")
 
+@dispatcher.message(Command('get_last_course'))
+async def get_last_course(messages: Message, command: CommandObject):
+    reload_dotenv()
+
+    try:
+        data = os.getenv('LAST_COURSE')
+        user_course = os.getenv('USER_COURSE')
+        percent = 100 - (float(user_course) / float(data)) * 100
+        await bot.send_message(chat_id=chat_id, text=f"Последнее значение курса из ЛК: {data}, отклонение: {percent:.3f} %")
+    except:
+        await bot.send_message(chat_id=chat_id, text=f"Не найдено последнее значение курса из ЛК.")
+
+@dispatcher.message(Command('get_c'))
+async def get_с(messages: Message, command: CommandObject):
+    reload_dotenv()
+    try:
+        data = os.getenv('USER_COURSE')
+        await bot.send_message(chat_id=chat_id, text=f"Последнее установленное эталонное значение курса: {data}")
+    except:
+        await bot.send_message(chat_id=chat_id, text=f"Не найдено последнее значение эталонного курса.")
+
+@dispatcher.message(Command('get_d'))
+async def get_d(messages: Message, command: CommandObject):
+    reload_dotenv()
+    try:
+        data = os.getenv('DEVIATION')
+        await bot.send_message(chat_id=chat_id, text=f"Последний установленный процент отклонения курса: {data} %")
+    except:
+        await bot.send_message(chat_id=chat_id, text=f"Не найдено последнее значение процента отклонения.")
+
 @dispatcher.message(Command('start_parser'))
 async def start_parser(messages: Message, command: CommandObject):
     #multiprocessing.Process(target=parser.run_parser()).start()
@@ -111,6 +141,10 @@ async def help(messages: Message, command: CommandObject):
                f" /set_user_password - установить пароль пользователя для парсера. \n"
                f" /set_pass - установить временный пароль. \n"                          
                f" /start_parser - удаленный запуск парсера из бота. \n"
+               f" /get_last_course - Вывести последнее значение полученное из ЛК. \n"
+               f" /get_c - Вывести последнее эталонного курса'. \n"
+               f" /get_d - Вывести последнее значение процента отклонения. \n"
+
                )
 
     await bot.send_message(chat_id=chat_id, text=f"{message}")
@@ -124,36 +158,47 @@ async def job():
         with open(data_path, 'r', encoding='utf-8') as f:
             data = f.read()
             f.close()
+        try:
             parsed_course = float(data)
+            old_parsed_course = parsed_course
+            os.environ["LAST_COURSE"] = str(old_parsed_course)
             percent = 100 - (float(user_course) / parsed_course) * 100
-            os.remove(data_path)
+        except:
+            print('Первый запуск, нет файла выгрузки')
+
+        os.remove(data_path)
+        try:
             course_history.append(parsed_course)
-            devation = float(os.getenv('DEVIATION')) - float(os.getenv('DEVIATION')) * 2
-            print(devation)
-            print(percent)
-            if len(course_history) > 2:
-                course_history.pop(0)
-                print(course_history)
-                if course_history[0] == course_history[1]:
-                    print("Изменений курса не было")
-                else:
-                    # if percent > 0:
-                        # messg = (f"\n"
-                        #          f"Курс увеличился на: {percent:.3f} %\n"
-                        #          f"Эталонное значение: {user_course}\n"
-                        #          f"Последнее значение из личного кабинета: {parsed_course}")
-                        # print(f"Процент увеличился на {percent:3f}")
-                        # messg = f"Процент увеличился на {percent:3f}"
-                    if percent < 0 and percent < devation:
-                        print(f"Курс уменьшился на: {percent:.3f} %\n")
-                        print(f"Текущий процент отклонения курса: {devation}")
-                        messg = (f"\n"
-                                 f"Курс уменьшился на: {percent:.3f} %\n"
-                                 f"Эталонное значение: {user_course}\n"
-                                 f"Текущий процент отклонения курса: {devation}\n"
-                                 f"Последнее значение из личного кабинета: {parsed_course}")
-                        #print(messg)
-                        await bot.send_message(chat_id=chat_id, text=f"{messg}")
+        except:
+            print("Первая выгрузка")
+
+
+        devation = float(os.getenv('DEVIATION')) - float(os.getenv('DEVIATION')) * 2
+        print(devation)
+        print(percent)
+        if len(course_history) > 2:
+            course_history.pop(0)
+            print(course_history)
+            if course_history[0] == course_history[1]:
+                print("Изменений курса не было")
+            else:
+                # if percent > 0:
+                    # messg = (f"\n"
+                    #          f"Курс увеличился на: {percent:.3f} %\n"
+                    #          f"Эталонное значение: {user_course}\n"
+                    #          f"Последнее значение из личного кабинета: {parsed_course}")
+                    # print(f"Процент увеличился на {percent:3f}")
+                    # messg = f"Процент увеличился на {percent:3f}"
+                if percent < 0 and percent < devation:
+                    print(f"Курс уменьшился на: {percent:.3f} %\n")
+                    print(f"Текущий процент отклонения курса: {devation}")
+                    messg = (f"\n"
+                             f"Эталонное значение: {user_course}\n"
+                             f"Текущий заданный  процент падения: {devation}\n"
+                             f"Курс от эталонного значения уменьшился на: {percent:.3f} %\n"
+                             f"Последнее значение из личного кабинета: {parsed_course}")
+                    #print(messg)
+                    await bot.send_message(chat_id=chat_id, text=f"{messg}")
 
 
 
@@ -170,11 +215,14 @@ def run():
     try:
         print("Бот запущен")
         reload_dotenv()
+
         asyncio.run(main())
 
     except (KeyboardInterrupt, SystemExit):
         pass
 
 if __name__ == '__main__':
+    exec_path = sys.executable
+    subprocess.Popen([exec_path, 'main.py'])
     run()
 

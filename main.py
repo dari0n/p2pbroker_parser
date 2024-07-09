@@ -12,25 +12,36 @@ tg_token = os.getenv('TG_TOKEN')
 username = os.getenv('P2PUSER')
 password = os.getenv('P2PPASS')
 url = os.getenv('URL')
+result_text=0
 def reload_dotenv():
     dotenv_path = join(dirname(__file__), '.env')
     load_dotenv(dotenv_path, override=True)
 
 def cloudflare_check(driver):
-    try:
-        driver('xpath://div/iframe').ele("Подтвердите, что вы человек", timeout=2.5).click()
-        print("Найден фрейм с проверкой от cloudflare")
-        return True
-    except:
-        print("iframe cloudflare не найден")
-        print(os.environ.get('USER_COURSE'))
-        return True
+    p = ChromiumPage()
+    p.get(os.getenv('LOGIN_URL'))
+    i = p.get_frame('@src^https://challenges.cloudflare.com/cdn-cgi/challenge-platform')
+    if i:
+        i('cb-lb-t').click()
+    #try:
+        # "//label[@class='ctp-checkbox-label']//span[@class='mark']"
+        # "xpath://div/iframe"
+        # driver("/xpath://div/iframe").ele("Подтвердите, что вы человек", timeout=4).click()
+        #driver.get_frame('@src^https://challenges.cloudflare.com/cdn-cgi')('.mark').click()
+        #driver("xpath://div/iframe").ele("Подтвердите, что вы человек", timeout=2.5).click()
+        #print("Найден фрейм с проверкой от cloudflare")
+        #return True
+
+    #except:
+        #print("iframe cloudflare не найден")
+        #print(os.environ.get('USER_COURSE'))
+        #return True
 
 
 def undetected(url):
     driver = ChromiumPage()
     driver.get(url)
-    time.sleep(3)
+
     return driver
 
 
@@ -42,7 +53,7 @@ def autorization(driver):
         driver.ele('@placeholder:Введите одноразовый код').input(os.environ.get('P2PSECRET'))
         # Пока тестовые credentials, убрал клик по кнопке авторизации
         driver.ele('@type:submit').click()
-        time.sleep(2)
+
     except:
         print('Поля авторизации не найдены. Пробуем парсить.')
         # return parse_course(driver)

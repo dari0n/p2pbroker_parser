@@ -161,7 +161,8 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
-
+test_edge.py
+test_sel.py
 # mkdocs documentation
 /site
 
