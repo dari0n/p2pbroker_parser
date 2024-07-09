@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Run exe">
+    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Исправление ошибок, добавление новых команд">
       <change afterPath="$PROJECT_DIR$/test_edge.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test_sel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +52,7 @@
     "Python.testqf.executor": "Run",
     "Python.undetectred.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Python/p2pbroker",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -218,7 +216,8 @@
       <workItem from="1720375117275" duration="2317000" />
       <workItem from="1720437288701" duration="1592000" />
       <workItem from="1720464371709" duration="11032000" />
-      <workItem from="1720525585582" duration="3062000" />
+      <workItem from="1720525585582" duration="16906000" />
+      <workItem from="1720546243769" duration="1714000" />
     </task>
     <task id="LOCAL-00001" summary="Первый способ обхода cloudflare не увенчался успехом. Едем дальше">
       <option name="closed" value="true" />
@@ -396,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720381649627</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Исправление ошибок, добавление новых команд">
+      <option name="closed" value="true" />
+      <created>1720528836450</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1720528836450</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,14 +438,15 @@
     <MESSAGE value="Корректировка /help" />
     <MESSAGE value="Корректировка bot" />
     <MESSAGE value="Run exe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Run exe" />
+    <MESSAGE value="Исправление ошибок, добавление новых команд" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление ошибок, добавление новых команд" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/p2pbroker$selenium_test.coverage" NAME="selenium_test Coverage Results" MODIFIED="1720188966435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/p2pbroker$testqf.coverage" NAME="testqf Coverage Results" MODIFIED="1720524125146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/p2pbroker$testqf.coverage" NAME="testqf Coverage Results" MODIFIED="1720547725701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$test_edge.coverage" NAME="test_edge Coverage Results" MODIFIED="1720472352023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$test_sel.coverage" NAME="test_sel Coverage Results" MODIFIED="1720472331320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/p2pbroker$bot__1_.coverage" NAME="bot (1) Coverage Results" MODIFIED="1720528606576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/p2pbroker$bot__1_.coverage" NAME="bot (1) Coverage Results" MODIFIED="1720546129534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$bot.coverage" NAME="bot Coverage Results" MODIFIED="1720205603646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$test_update_env.coverage" NAME="test_update_env Coverage Results" MODIFIED="1720359239121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/p2pbroker$main.coverage" NAME="main Coverage Results" MODIFIED="1720469006493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

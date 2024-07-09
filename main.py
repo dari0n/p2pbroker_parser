@@ -1,4 +1,5 @@
 from DrissionPage import ChromiumPage
+import dotenv
 from dotenv import load_dotenv
 import os
 from os.path import join, dirname
@@ -18,11 +19,23 @@ def reload_dotenv():
     load_dotenv(dotenv_path, override=True)
 
 def cloudflare_check(driver):
-    p = ChromiumPage()
-    p.get(os.getenv('LOGIN_URL'))
-    i = p.get_frame('@src^https://challenges.cloudflare.com/cdn-cgi/challenge-platform')
-    if i:
-        i('cb-lb-t').click()
+    title = driver.title
+    if title == 'Один момент…':
+        time.sleep(10)
+        i = driver.ele('.cf-turnstile-wrapper', timeout=5).shadow_root
+        child = i.child()
+        child.ele('.cb-lb-t').click()
+    else:
+        print('Не найден cloudflare')
+        dotenv.set_key(dotenv_path, "CLOUDFLARE", '0')
+
+
+
+    # p = ChromiumPage()
+    # p.get(os.getenv('LOGIN_URL'))
+    # i = p.get_frame('@src^https://challenges.cloudflare.com/cdn-cgi/challenge-platform')
+    # if i:
+    #     i('cb-lb-t').click()
     #try:
         # "//label[@class='ctp-checkbox-label']//span[@class='mark']"
         # "xpath://div/iframe"
@@ -41,7 +54,6 @@ def cloudflare_check(driver):
 def undetected(url):
     driver = ChromiumPage()
     driver.get(url)
-
     return driver
 
 
@@ -67,11 +79,15 @@ def parse_course(driver):
         i += 1
         if i == 5:
             result_text = item.text[:-2].replace(',', '.')
+    try:
+        with open("data_src/parsed.txt", "w") as f:
+            f.write(result_text)
+            print(f"Текущий курс = {result_text} записан в файл")
+            f.close()
+    except:
+        print("Нет данных parse_course")
 
-    with open("data_src/parsed.txt", "w") as f:
-        f.write(result_text)
-        print(f"Текущий курс = {result_text} записан в файл")
-        f.close()
+
 
 def run_parser():
     try:
@@ -101,9 +117,8 @@ if __name__ == '__main__':
             autorization(driver)
             parse_course(driver)
             driver.refresh()
+            time.sleep(30)
 
 
     except (KeyboardInterrupt, SystemExit):
-        driver.quit()
-
-
+        print('Необходимо перезапустить бота')

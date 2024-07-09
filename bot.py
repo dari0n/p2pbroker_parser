@@ -14,6 +14,7 @@ from aiogram.types import Message
 from dotenv import load_dotenv
 from aiogram.fsm.context import FSMContext
 from os.path import join, dirname
+import psutil
 import main as parser
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -152,6 +153,7 @@ async def help(messages: Message, command: CommandObject):
 
 
 async def job():
+    reload_dotenv()
     if os.path.exists(data_path):
         print("Файл выгрузки найден")
         reload_dotenv()
@@ -172,10 +174,8 @@ async def job():
         except:
             print("Первая выгрузка")
 
-
         devation = float(os.getenv('DEVIATION')) - float(os.getenv('DEVIATION')) * 2
-        print(devation)
-        print(percent)
+
         if len(course_history) > 2:
             course_history.pop(0)
             print(course_history)
@@ -183,12 +183,12 @@ async def job():
                 print("Изменений курса не было")
             else:
                 # if percent > 0:
-                    # messg = (f"\n"
-                    #          f"Курс увеличился на: {percent:.3f} %\n"
-                    #          f"Эталонное значение: {user_course}\n"
-                    #          f"Последнее значение из личного кабинета: {parsed_course}")
-                    # print(f"Процент увеличился на {percent:3f}")
-                    # messg = f"Процент увеличился на {percent:3f}"
+                # messg = (f"\n"
+                #          f"Курс увеличился на: {percent:.3f} %\n"
+                #          f"Эталонное значение: {user_course}\n"
+                #          f"Последнее значение из личного кабинета: {parsed_course}")
+                # print(f"Процент увеличился на {percent:3f}")
+                # messg = f"Процент увеличился на {percent:3f}"
                 if percent < 0 and percent < devation:
                     print(f"Курс уменьшился на: {percent:.3f} %\n")
                     print(f"Текущий процент отклонения курса: {devation}")
@@ -197,14 +197,36 @@ async def job():
                              f"Текущий заданный  процент падения: {devation}\n"
                              f"Курс от эталонного значения уменьшился на: {percent:.3f} %\n"
                              f"Последнее значение из личного кабинета: {parsed_course}")
-                    #print(messg)
+                    # print(messg)
                     await bot.send_message(chat_id=chat_id, text=f"{messg}")
+
+
+
+# async def cloudflare_job():
+#     reload_dotenv()
+#     cloudflare = os.getenv('CLOUDFLARE')
+#     if cloudflare == '1':
+#         reload_dotenv()
+#         dotenv.set_key(dotenv_path, 'CLOUDFLARE', '0')
+#         await bot.send_message(chat_id=chat_id,
+#                               text=f'Найден cloudflare. Необходимо в браузере бота пройти проверку и перезапустить Run.exe Работа бота завершена')
+#         print('cloudflare_job отработал')
+#         PROCNAME = "python.exe"
+#
+#         for proc in psutil.process_iter():
+#             if proc.name() == PROCNAME:
+#                 proc.kill()
+#
+#
+#     else:
+#         print("Задание отработало, clodflare не найден.")
 
 
 
 async def main():
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(job, 'interval', seconds=10)
+    scheduler.add_job(job, 'interval', seconds=30)
+    # scheduler.add_job(cloudflare_job, 'interval', seconds=10)
     scheduler.start()
     await dispatcher.start_polling(bot)
     while True:
@@ -215,14 +237,12 @@ def run():
     try:
         print("Бот запущен")
         reload_dotenv()
-
         asyncio.run(main())
-
     except (KeyboardInterrupt, SystemExit):
         pass
 
 if __name__ == '__main__':
+    reload_dotenv()
     exec_path = sys.executable
     subprocess.Popen([exec_path, 'main.py'])
     run()
-
