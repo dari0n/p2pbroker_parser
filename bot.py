@@ -27,7 +27,6 @@ dispatcher = Dispatcher()
 dispatcher.include_router(router)
 data_path = 'data_src/parsed.txt'
 course_history = [0]
-dotenv.set_key(dotenv_path, "PARSER_ACTIVITY", '0')
 """
 TODO: Переделать иерархию, добавить методы управления. ("БОТ Авторизуйся", "БОТ Текущий курс" и др.)
 """
@@ -199,6 +198,8 @@ async def job():
                              f"Последнее значение из личного кабинета: {parsed_course}")
                     # print(messg)
                     await bot.send_message(chat_id=chat_id, text=f"{messg}")
+    else:
+        print("Нет файла выгрузки")
 
 
 
@@ -225,9 +226,12 @@ async def job():
 
 async def main():
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(job, 'interval', seconds=30)
+    scheduler.add_job(job, 'interval', seconds=10)
     # scheduler.add_job(cloudflare_job, 'interval', seconds=10)
     scheduler.start()
+    exec_path = sys.executable
+    subprocess.Popen([exec_path, 'main.py'])
+    reload_dotenv()
     await dispatcher.start_polling(bot)
     while True:
         await asyncio.sleep(1)
@@ -236,13 +240,10 @@ async def main():
 def run():
     try:
         print("Бот запущен")
-        reload_dotenv()
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         pass
 
 if __name__ == '__main__':
     reload_dotenv()
-    exec_path = sys.executable
-    subprocess.Popen([exec_path, 'main.py'])
     run()
