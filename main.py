@@ -65,7 +65,7 @@ def cloudflare_check():
 
 def login():
     try:
-        login_field = driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
+        login_field = driver.ele('@placeholder:Введите логин')
         if login_field is not None:
             reload_dotenv()
             driver.ele('@placeholder:Введите логин').input(os.environ.get('P2PUSER'))
