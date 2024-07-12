@@ -153,19 +153,18 @@ async def help(messages: Message, command: CommandObject):
 
 async def job():
     reload_dotenv()
+    user_course = os.getenv('USER_COURSE')
     if os.path.exists(data_path):
         print("Файл выгрузки найден")
         reload_dotenv()
         with open(data_path, 'r', encoding='utf-8') as f:
             data = f.read()
             f.close()
-        try:
-            parsed_course = float(data)
-            old_parsed_course = parsed_course
-            os.environ["LAST_COURSE"] = str(old_parsed_course)
-            percent = 100 - (float(user_course) / parsed_course) * 100
-        except:
-            print('Первый запуск, нет файла выгрузки')
+        parsed_course = float(data)
+        old_parsed_course = parsed_course
+        os.environ["LAST_COURSE"] = str(old_parsed_course)
+        percent = 100 - (float(user_course) / parsed_course) * 100
+        print('Первый запуск, нет файла выгрузки')
 
         os.remove(data_path)
         try:

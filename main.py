@@ -6,6 +6,7 @@ from os.path import join, dirname
 import time
 import asyncio
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+import apscheduler.schedulers.background
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path, override=True)
@@ -30,7 +31,12 @@ def cloudflare_check():
         try:
             i = driver.ele('.cf-turnstile-wrapper', timeout=5).shadow_root
             child = i.child()
-            child.ele('.cb-lb-t').click()
+            print(child)
+            b = child.ele('t:body').shadow_root
+            c = b.ele('.cb-i')
+            print(c)
+            c.click()
+            # child.ele('.cb-i').click()
         except:
             print('Не получилось прокликать')
     else:
@@ -119,6 +125,7 @@ def parse_course():
 
 async def main():
     scheduler = AsyncIOScheduler()
+    apscheduler.schedulers.background.BackgroundScheduler({'apscheduler.job_defaults.max_instances': 2})
     scheduler.add_job(cloudflare_check, 'interval', seconds=4)
     scheduler.add_job(login, 'interval', seconds=15)
     scheduler.add_job(parse_course, 'interval', seconds=28)
