@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Фикс поиска login_field">
+    <list default="true" id="914a0d34-cbf8-4f2c-b279-be993548b17c" name="Changes" comment="Фикс cloudflare уже не знаю какой раз.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,28 +37,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.bot (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.selenium_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_edge.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_sel.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_update_env.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testqf.executor&quot;: &quot;Run&quot;,
-    &quot;Python.undetectred.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Python/p2pbroker&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.bot (1).executor": "Run",
+    "Python.bot.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.selenium_test.executor": "Run",
+    "Python.test_edge.executor": "Run",
+    "Python.test_sel.executor": "Run",
+    "Python.test_update_env.executor": "Run",
+    "Python.testqf.executor": "Run",
+    "Python.undetectred.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Python/p2pbroker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Python\p2pbroker" />
@@ -217,7 +216,8 @@
       <workItem from="1720525585582" duration="16906000" />
       <workItem from="1720546243769" duration="23408000" />
       <workItem from="1720737233055" duration="663000" />
-      <workItem from="1720784110335" duration="5112000" />
+      <workItem from="1720784110335" duration="6385000" />
+      <workItem from="1720879056461" duration="2771000" />
     </task>
     <task id="LOCAL-00001" summary="Первый способ обхода cloudflare не увенчался успехом. Едем дальше">
       <option name="closed" value="true" />
@@ -427,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720601343756</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Фикс cloudflare уже не знаю какой раз.">
+      <option name="closed" value="true" />
+      <created>1720792658811</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1720792658811</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +474,8 @@
     <MESSAGE value="Получилось второй раз обойти проверку cloudflare" />
     <MESSAGE value="Асинхронного чуть больше" />
     <MESSAGE value="Фикс поиска login_field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс поиска login_field" />
+    <MESSAGE value="Фикс cloudflare уже не знаю какой раз." />
+    <option name="LAST_COMMIT_MESSAGE" value="Фикс cloudflare уже не знаю какой раз." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/p2pbroker$selenium_test.coverage" NAME="selenium_test Coverage Results" MODIFIED="1720188966435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
